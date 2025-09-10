@@ -39,7 +39,7 @@ public class TransactionService {
             }
         }
 
-        //deteksi transaksi duplikat dalam waktu yang bersamaan
+        //deteksi transaksi yang berbeda lokasi dalam waktu yang singkat dari trx terakhir (10 menit)
         // 2. Deteksi Anomali Lokasi dan Waktu (Java Stream)
         LocalDateTime tenMinutesAgo = LocalDateTime.now().minusMinutes(10);
         List<Transactions> recentTransactions = transactionRepo.findByUserAndTransactionDateAfter(user, tenMinutesAgo);
